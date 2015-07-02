@@ -35,7 +35,7 @@ class VoteForm(forms.Form):
         widget=forms.HiddenInput)
     honeypot = forms.CharField(required=False, widget=forms.HiddenInput)
 
-    def __init__(self, target_object, key=None, score_range=None, score_step=None,
+    def __init__(self, target_object, key, score_range=None, score_step=None,
         can_delete_vote=None, data=None, initial=None):
         self.target_object = target_object
         self.key = key
