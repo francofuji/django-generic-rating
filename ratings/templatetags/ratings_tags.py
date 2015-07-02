@@ -262,12 +262,12 @@ def scores_annotate(parser, token):
         tag_name, arg = token.contents.split(None, 1)
     except ValueError:
         error = u"%r tag requires arguments" % token.contents.split()[0]
-        raise template.TemplateSyntaxError, error
+        raise template.TemplateSyntaxError(error)
     # args validation
     match = SCORES_ANNOTATE_EXPRESSION.match(arg)
     if not match:
         error = u"%r tag has invalid arguments" % tag_name
-        raise template.TemplateSyntaxError, error
+        raise template.TemplateSyntaxError(error)
     kwargs = match.groupdict()
     # fields validation
     fields = kwargs.pop('fields')
@@ -275,7 +275,7 @@ def scores_annotate(parser, token):
         fields_map = dict(i.split("=") for i in fields.split(","))
     except (TypeError, ValueError):
         error = u"%r tag has invalid field arguments" % tag_name
-        raise template.TemplateSyntaxError, error
+        raise template.TemplateSyntaxError(error)
     # to the node
     return ScoresAnnotateNode(fields_map, **kwargs)
 
@@ -398,12 +398,12 @@ def get_rating_vote(parser, token):
         tag_name, arg = token.contents.split(None, 1)
     except ValueError:
         error = u"%r tag requires arguments" % token.contents.split()[0]
-        raise template.TemplateSyntaxError, error
+        raise template.TemplateSyntaxError(error)
     # args validation
     match = GET_RATING_VOTE_EXPRESSION.match(arg)
     if not match:
         error = u"%r tag has invalid arguments" % tag_name
-        raise template.TemplateSyntaxError, error
+        raise template.TemplateSyntaxError(error)
     return RatingVoteNode(**match.groupdict())
     
 class RatingVoteNode(template.Node):
@@ -552,12 +552,12 @@ def _get_latest_vote(parser, token, expression):
         tag_name, arg = token.contents.split(None, 1)
     except ValueError:
         error = u"%r tag requires arguments" % token.contents.split()[0]
-        raise template.TemplateSyntaxError, error
+        raise template.TemplateSyntaxError(error)
     # args validation
     match = expression.match(arg)
     if not match:
         error = u"%r tag has invalid arguments" % tag_name
-        raise template.TemplateSyntaxError, error
+        raise template.TemplateSyntaxError(error)
     # to the node
     return LatestVotesNode(**match.groupdict())
     
@@ -668,12 +668,12 @@ def votes_annotate(parser, token):
         tag_name, arg = token.contents.split(None, 1)
     except ValueError:
         error = u"%r tag requires arguments" % token.contents.split()[0]
-        raise template.TemplateSyntaxError, error
+        raise template.TemplateSyntaxError(error)
     # args validation
     match = VOTES_ANNOTATE_EXPRESSION.match(arg)
     if not match:
         error = u"%r tag has invalid arguments" % tag_name
-        raise template.TemplateSyntaxError, error
+        raise template.TemplateSyntaxError(error)
     # to the node
     return VotesAnnotateNode(**match.groupdict())
 
