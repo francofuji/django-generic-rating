@@ -6,7 +6,7 @@ from django.utils.crypto import salted_hmac, constant_time_compare
 
 from ratings import cookies, exceptions
 
-from widgets import SliderWidget, StarWidget
+from ratings.forms.widgets import SliderWidget, StarWidget
 
 class VoteForm(forms.Form):
     """
